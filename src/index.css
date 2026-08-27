@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #E6E4DD;
+  --color-brand-dark: #0E0E0E;
+  --color-brand-green: #1f2e22;
+  --color-brand-concrete: #d4d2cc;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Syncopate", sans-serif;
+}
+
+@layer base {
+  body {
+    cursor: none; /* We will implement a custom cursor */
+  }
+}
+
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+}
+
+.noise-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 49;
+  background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.15) 100%);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom gooey filter for logo */
+.gooey-filter {
+  filter: url('#gooey');
+}
