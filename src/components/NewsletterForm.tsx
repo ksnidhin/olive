@@ -27,7 +27,7 @@ export default function NewsletterForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
-      className="flex flex-col items-center mt-12 mb-32 z-30 relative w-full max-w-md mx-auto"
+      className="flex flex-col items-center w-full max-w-md mx-auto relative"
     >
       <h3 className="text-[9px] md:text-[10px] font-medium tracking-[0.4em] uppercase text-brand-dark mb-6 text-center">
         Be the first to know.
