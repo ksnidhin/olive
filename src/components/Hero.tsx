@@ -23,20 +23,24 @@ export default function Hero() {
     <section className="relative w-full min-h-screen flex flex-col justify-center items-center pt-24 pb-12 overflow-hidden pointer-events-none">
       
       {/* Background Textures */}
-      {/* Concrete wall on the right */}
-      <div className="absolute top-0 right-0 w-[40%] md:w-1/4 h-full bg-[#cbc9c3] z-0 shadow-[-20px_0_40px_rgba(0,0,0,0.05)] border-l border-black/5 mix-blend-multiply opacity-50"></div>
-      
-      {/* Hanging T-shirt */}
-      <motion.div 
-        animate={{ 
-          x: mousePos.x * -15, 
-          y: mousePos.y * -15 
-        }}
-        transition={{ type: "spring", stiffness: 40, damping: 25 }}
-        className="absolute top-[45%] -translate-y-1/2 right-[-20%] md:right-[-15%] lg:right-[-10%] w-[70%] md:w-[45%] lg:w-[35%] max-w-md z-10 mix-blend-multiply"
-      >
-        <img src="/tshirt.jpg" alt="Dark Garment" className="w-full h-auto object-cover" style={{ filter: 'contrast(1.2) brightness(0.9) grayscale(0.5)' }} />
-      </motion.div>
+      {/* Concrete wall + Hanging T-shirt */}
+      <div className="absolute top-0 right-0 w-[50%] md:w-[40%] lg:w-[32%] h-full z-0 overflow-hidden shadow-[-30px_0_50px_rgba(0,0,0,0.08)] pointer-events-none">
+        <motion.div 
+          animate={{ 
+            x: mousePos.x * -10, 
+            y: mousePos.y * -10 
+          }}
+          transition={{ type: "spring", stiffness: 40, damping: 25 }}
+          className="absolute top-0 left-[-5%] w-[110%] h-[110%] -mt-[2%]"
+        >
+          <img 
+            src="/tshirt-wall-generated.jpg" 
+            alt="Wall and Garment" 
+            className="w-full h-full object-cover object-[75%_center] md:object-[80%_center] lg:object-[85%_center]" 
+            style={{ filter: 'brightness(0.95)' }} 
+          />
+        </motion.div>
+      </div>
 
       {/* Rock on bottom left */}
       <motion.div 
@@ -45,7 +49,7 @@ export default function Hero() {
           y: mousePos.y * 20 
         }}
         transition={{ type: "spring", stiffness: 30, damping: 20 }}
-        className="absolute -bottom-5 md:-bottom-10 -left-10 md:-left-20 w-[60%] md:w-[40%] lg:w-[30%] max-w-lg z-30 mix-blend-multiply opacity-80 md:opacity-100"
+        className="absolute -bottom-10 -left-10 md:-left-20 w-[70%] sm:w-[60%] md:w-[40%] lg:w-[30%] max-w-lg z-10 mix-blend-multiply opacity-90 md:opacity-100"
       >
         <img src="/rock.jpg" alt="Rock" className="w-full h-auto object-cover rounded-t-full rounded-r-full" style={{ filter: 'contrast(1.3) brightness(0.8)' }} />
       </motion.div>
@@ -66,13 +70,13 @@ export default function Hero() {
       </motion.div>
 
       {/* Main Content Container */}
-      <div className="relative z-20 w-full flex flex-col items-center justify-center px-4 mt-12 pointer-events-auto">
+      <div className="relative z-20 w-full flex flex-col items-center justify-center px-4 mt-8 md:mt-12 pointer-events-auto min-h-[70vh]">
         
         <motion.h2 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="text-[10px] md:text-xs font-medium tracking-[0.3em] uppercase text-brand-dark text-center leading-relaxed"
+          className="text-[9px] md:text-[10px] font-medium tracking-[0.3em] uppercase text-brand-dark text-center leading-relaxed mb-8 md:mb-10"
         >
           Something new<br />
           is taking shape.
@@ -84,7 +88,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="text-lg md:text-2xl font-bold tracking-tight text-brand-green mt-2 font-display"
+          className="text-base md:text-xl font-bold tracking-tight text-brand-green mt-4 md:mt-6 font-display"
         >
           Beyond universe.
         </motion.h1>

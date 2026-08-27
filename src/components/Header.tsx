@@ -12,18 +12,21 @@ export default function Header({ onMenuClick }: HeaderProps) {
       transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 w-full z-40 px-6 py-8 md:px-12 md:py-10 flex justify-between items-start pointer-events-none"
     >
-      <div className="pointer-events-auto">
-        <svg width="100" height="40" viewBox="0 0 100 40" className="fill-brand-dark overflow-visible">
-           <path d="M5,10 C5,10 10,-5 20,5 C30,15 25,25 25,25 C25,25 20,40 10,35 C0,30 5,10 5,10 Z" style={{filter: 'url(#gooey)'}}/>
-           <path d="M30,5 C40,-5 45,15 45,15 C45,15 50,30 40,35 C30,40 25,15 30,5 Z" style={{filter: 'url(#gooey)'}}/>
-           <text x="0" y="25" fontFamily="Syncopate, sans-serif" fontWeight="bold" fontSize="22" letterSpacing="-1.5" className="fill-brand-dark">UNIVE</text>
-        </svg>
+      <div className="pointer-events-auto flex items-center">
+        <img 
+          src="/unive-logo.png" 
+          alt="UNIVE" 
+          className="h-4 md:h-5 object-contain mix-blend-multiply"
+        />
       </div>
       
       <div className="flex items-center gap-8 lg:gap-16 pointer-events-auto">
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] md:text-xs font-medium tracking-widest uppercase text-brand-dark">Coming Soon</span>
-          <div className="w-1.5 h-1.5 bg-brand-green rounded-full"></div>
+        <div className="flex items-center gap-2 group cursor-default">
+          <span className="text-[10px] md:text-xs font-medium tracking-widest uppercase text-brand-dark group-hover:opacity-80 transition-opacity">Coming Soon</span>
+          <div className="relative flex items-center justify-center w-2 h-2">
+            <span className="absolute inline-flex w-full h-full rounded-full bg-brand-green opacity-40 animate-ping"></span>
+            <span className="relative inline-flex rounded-full w-1.5 h-1.5 bg-brand-green"></span>
+          </div>
         </div>
         
         <button 
