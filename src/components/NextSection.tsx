@@ -48,13 +48,12 @@ export default function NextSection() {
 
       {/* Giant 01 */}
       <motion.div 
-        style={{ y: y01 }}
+        style={{ y: y01, WebkitTextStroke: '2px rgba(255,255,255,0.8)' }}
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 0.05, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute top-[10%] -left-[10%] md:-left-[5%] text-[40vw] md:text-[30vw] font-display font-bold leading-none pointer-events-none select-none text-transparent"
-        style={{ WebkitTextStroke: '2px rgba(255,255,255,0.8)' }}
       >
         01
       </motion.div>
