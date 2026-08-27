@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import BrandLogo from './BrandLogo';
 import Orb from './Orb';
-import NewsletterForm from './NewsletterForm';
 import FooterLinks from './FooterLinks';
 
 export default function Hero() {
@@ -43,24 +42,23 @@ export default function Hero() {
       <motion.div 
         animate={{ x: mousePos.x * 20, y: mousePos.y * 20 }}
         transition={{ type: "spring", stiffness: 30, damping: 20 }}
-        className="absolute -bottom-10 -left-10 md:-left-20 w-[60%] sm:w-[50%] md:w-[40%] lg:w-[30%] max-w-sm z-10 mix-blend-multiply opacity-90 md:opacity-100 pointer-events-none"
+        className="absolute -bottom-16 md:-bottom-24 left-[15%] md:left-[20%] w-[60%] sm:w-[50%] md:w-[35%] lg:w-[25%] max-w-sm z-10 mix-blend-multiply pointer-events-none"
       >
-        <img src="/rock.jpg" alt="Rock" className="w-full h-auto object-cover rounded-t-full rounded-r-full" style={{ filter: 'contrast(1.3) brightness(0.8)' }} />
+        <div className="w-full aspect-square rounded-full overflow-hidden">
+          <img src="/rock.jpg" alt="Rock" className="w-full h-full object-cover" style={{ filter: 'contrast(1.3) brightness(0.9)' }} />
+        </div>
       </motion.div>
 
-      {/* Large thin decorative circle arc */}
-      <div className="absolute -bottom-[10%] -left-[10%] w-[50vw] h-[50vw] rounded-full border-[1px] border-brand-dark/10 pointer-events-none z-10"></div>
+      {/* Large thin decorative circle arc behind rock */}
+      <div className="absolute -bottom-[5%] left-[25%] w-[60vw] md:w-[45vw] h-[60vw] md:h-[45vw] rounded-full border-[1px] border-brand-dark/10 pointer-events-none z-0"></div>
 
       {/* Left vertical text */}
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute left-4 md:left-8 top-[35%] -rotate-90 origin-left z-20 pointer-events-auto flex items-center gap-4"
+        className="absolute left-6 md:left-10 top-[35%] -rotate-90 origin-left z-20 pointer-events-auto flex items-center gap-4"
       >
-        <span className="text-[7px] md:text-[8px] font-medium tracking-[0.2em] text-brand-dark/50">
-          01.04.26
-        </span>
         <span className="text-[9px] md:text-[10px] font-medium tracking-[0.4em] uppercase text-brand-dark whitespace-nowrap">
           Beyond Universe.
         </span>
@@ -96,13 +94,8 @@ export default function Hero() {
         {/* Orb directly below subtitle */}
         <Orb />
 
-        {/* Empty breathing space pushing form to bottom */}
-        <div className="flex-grow min-h-[80px] md:min-h-[120px]"></div>
-
-        {/* Signup Form */}
-        <div className="z-30 w-full mb-16 md:mb-24 flex justify-center px-4">
-          <NewsletterForm />
-        </div>
+        {/* Generous negative space below the orb */}
+        <div className="flex-grow min-h-[150px] md:min-h-[250px]"></div>
       </div>
 
       <FooterLinks />
@@ -112,16 +105,16 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-6 md:bottom-8 left-6 md:left-24 z-40 pointer-events-auto mix-blend-difference"
+        className="absolute bottom-6 md:bottom-8 left-6 md:left-12 z-40 pointer-events-auto"
       >
-        <p className="text-[8px] md:text-[9px] tracking-widest uppercase text-white/80 leading-[1.8em]">
+        <p className="text-[8px] md:text-[9px] tracking-widest uppercase text-brand-dark/60 font-medium leading-[1.8em]">
           © 2026 UNIVE<br/>
           ALL RIGHTS RESERVED.
         </p>
       </motion.div>
 
       {/* Crosshairs */}
-      <div className="absolute left-[15%] bottom-[25%] w-6 h-6 pointer-events-none z-40 opacity-30 mix-blend-difference">
+      <div className="absolute left-[20%] bottom-[35%] w-6 h-6 pointer-events-none z-40 opacity-30 mix-blend-difference">
          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white"></div>
          <div className="absolute left-1/2 top-0 w-[1px] h-full bg-white"></div>
          <div className="absolute top-1/2 left-1/2 w-3 h-3 border border-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
