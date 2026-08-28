@@ -5,10 +5,10 @@ export default function FooterLinks() {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 1.8, ease: "easeOut" }}
-      className="absolute bottom-8 right-6 md:right-12 flex gap-8 z-30 pointer-events-auto"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 2 }}
+      className="absolute bottom-6 md:bottom-8 right-6 md:right-12 flex flex-col md:flex-row items-end gap-3 md:gap-8 z-30 pointer-events-auto"
     >
       {links.map((link) => (
         <a 

@@ -23,11 +23,11 @@ export default function Hero() {
       
       {/* Background Textures & Vertical Split */}
       {/* Right side concrete wall with T-shirt clipping */}
-      <div className="absolute top-0 right-0 w-[40%] md:w-[35%] lg:w-[28%] h-full z-0 overflow-hidden shadow-[-30px_0_50px_rgba(0,0,0,0.08)] pointer-events-none bg-[#cbc9c3] mix-blend-multiply border-l border-black/5">
+      <div className="absolute top-0 right-0 w-[42%] md:w-[35%] lg:w-[28%] h-full z-0 overflow-hidden shadow-[-30px_0_50px_rgba(0,0,0,0.08)] pointer-events-none bg-[#cbc9c3] mix-blend-multiply border-l border-black/5">
         <motion.div 
           animate={{ x: mousePos.x * -10, y: mousePos.y * -10 }}
           transition={{ type: "spring", stiffness: 40, damping: 25 }}
-          className="absolute top-[10%] md:top-[15%] right-0 w-[200%] sm:w-[180%] md:w-[150%] lg:w-[130%]"
+          className="absolute top-[10%] right-0 w-[180%] md:w-[150%] lg:w-[130%]"
         >
           <img 
             src="/tshirt-wall-generated.jpg" 
@@ -42,15 +42,15 @@ export default function Hero() {
       <motion.div 
         animate={{ x: mousePos.x * 20, y: mousePos.y * 20 }}
         transition={{ type: "spring", stiffness: 30, damping: 20 }}
-        className="absolute -bottom-16 md:-bottom-24 left-[15%] md:left-[20%] w-[60%] sm:w-[50%] md:w-[35%] lg:w-[25%] max-w-sm z-10 mix-blend-multiply pointer-events-none"
+        className="absolute -bottom-10 left-[40%] md:left-[25%] -translate-x-[50%] w-[45%] sm:w-[40%] md:w-[35%] lg:w-[25%] max-w-sm z-10 mix-blend-multiply pointer-events-none"
       >
         <div className="w-full aspect-square rounded-full overflow-hidden">
-          <img src="/rock.jpg" alt="Rock" className="w-full h-full object-cover" style={{ filter: 'contrast(1.3) brightness(0.9)' }} />
+          <img src="/rock.jpg" alt="Rock" className="w-full h-full object-cover object-center" style={{ filter: 'contrast(1.3) brightness(0.9)' }} />
         </div>
       </motion.div>
 
       {/* Large thin decorative circle arc behind rock */}
-      <div className="absolute -bottom-[5%] left-[25%] w-[60vw] md:w-[45vw] h-[60vw] md:h-[45vw] rounded-full border-[1px] border-brand-dark/10 pointer-events-none z-0"></div>
+      <div className="absolute -bottom-[5%] left-[15%] md:left-[10%] w-[50vw] md:w-[45vw] h-[50vw] md:h-[45vw] rounded-full border-[1px] border-brand-dark/10 pointer-events-none z-0"></div>
 
       {/* Left vertical text */}
       <motion.div 
