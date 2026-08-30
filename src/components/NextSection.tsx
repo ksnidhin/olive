@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
+import FooterLinks from './FooterLinks';
 
 export default function NextSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -15,7 +16,6 @@ export default function NextSection() {
   const yBg = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const yImage = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const yText = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y01 = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const xComingSoon = useTransform(scrollYProgress, [0, 1], [200, -200]);
 
   useEffect(() => {
@@ -55,22 +55,7 @@ export default function NextSection() {
         <img src="/coming-soon.svg" alt="Coming Soon" className="w-full h-auto object-contain" />
       </motion.div>
 
-      {/* Giant 01 */}
-      <motion.div 
-        style={{ y: y01, WebkitTextStroke: '2px rgba(255,255,255,0.8)' }}
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 0.05, x: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute top-[10%] -left-[10%] md:-left-[5%] text-[40vw] md:text-[30vw] font-display font-bold leading-none pointer-events-none select-none text-transparent"
-      >
-        01
-      </motion.div>
 
-      {/* Subtle Graphics */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1px] h-32 bg-brand-bg/10 pointer-events-none"></div>
-      <div className="absolute top-1/4 left-[10%] w-2 h-2 rounded-full border border-brand-bg/20 pointer-events-none"></div>
-      
       {/* Content Layout */}
       <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-end justify-between gap-16 lg:gap-8">
         
@@ -157,6 +142,8 @@ export default function NextSection() {
         </motion.div>
 
       </div>
+      
+      <FooterLinks />
     </section>
   );
 }

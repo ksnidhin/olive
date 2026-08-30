@@ -8,7 +8,7 @@ interface MenuOverlayProps {
 
 export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
   const [showComingSoon, setShowComingSoon] = useState(false);
-  const links = ['Collection', 'Journal', 'About', 'Contact'];
+  const links = ['Collection', 'Journal'];
 
   // Lock body scroll
   useEffect(() => {
@@ -108,17 +108,6 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
               </motion.div>
             )}
           </AnimatePresence>
-          
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="absolute bottom-12 flex gap-8 text-[10px] tracking-widest uppercase opacity-50"
-          >
-            <a href="https://www.instagram.com/unive.in" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">Instagram</a>
-            <a href="#about" className="hover:opacity-100 transition-opacity">About</a>
-            <a href="mailto:wearunive@gmail.com" className="hover:opacity-100 transition-opacity">Contact</a>
-          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

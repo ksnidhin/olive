@@ -20,10 +20,10 @@ export default function FooterLinks() {
           href={link.url}
           target={link.target}
           rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
-          className="text-[9px] md:text-[10px] font-medium tracking-[0.2em] uppercase text-brand-dark/80 hover:text-brand-dark transition-colors relative group"
+          className="text-[9px] md:text-[10px] font-medium tracking-[0.2em] uppercase text-brand-bg/80 hover:text-brand-bg transition-colors relative group"
         >
           {link.name}
-          <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-brand-dark origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+          <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-brand-bg origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
         </a>
       ))}
     </motion.div>

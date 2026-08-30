@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import BrandLogo from './BrandLogo';
 import Orb from './Orb';
-import FooterLinks from './FooterLinks';
 
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -97,8 +96,6 @@ export default function Hero() {
         {/* Generous negative space below the orb */}
         <div className="flex-grow min-h-[150px] md:min-h-[250px]"></div>
       </div>
-
-      <FooterLinks />
 
       {/* Bottom left copyright */}
       <motion.div 
