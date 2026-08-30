@@ -12,8 +12,6 @@ export default function NextSection() {
 
   // Parallax based on scroll
   const yBg = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const yText = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const xComingSoon = useTransform(scrollYProgress, [0, 1], [200, -200]);
 
   return (
     <section 
@@ -32,47 +30,21 @@ export default function NextSection() {
         <img src="/unive-logo.png" alt="" className="w-full h-auto object-contain filter invert" />
       </motion.div>
 
-      {/* New Coming Soon Scrolling SVG */}
-      <motion.div 
-        style={{ y: yText, x: xComingSoon }}
-        className="absolute top-[20%] md:top-[10%] w-[150vw] md:w-[100vw] lg:w-[80vw] opacity-10 pointer-events-none flex justify-center mix-blend-screen"
-      >
-        <img src="/coming-soon.svg" alt="Coming Soon" className="w-full h-auto object-contain" />
-      </motion.div>
-
-
-      {/* Content Layout */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col items-center justify-center gap-16">
-        
-        {/* Typography */}
-        <motion.div 
-          style={{ y: yText }}
-          className="flex flex-col items-center text-center w-full max-w-2xl"
+      {/* Main COMING SOON SVG Focal Point */}
+      <div className="relative z-20 w-full max-w-4xl md:max-w-6xl mx-auto flex flex-col items-center justify-center px-4 md:px-8 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          whileInView={{ opacity: 0.95, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full flex justify-center origin-center drop-shadow-2xl"
         >
-          {/* Main "COMING SOON" Content Block */}
-          <motion.div
-            initial={{ opacity: 0.15, y: 40, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center gap-12 md:gap-24 origin-center"
-          >
-            {/* Metadata */}
-            <div className="flex flex-col items-center gap-3 text-[8px] md:text-[9px] font-medium tracking-[0.4em] uppercase text-brand-bg/40">
-              <span>UNIVE / 001</span>
-              <span>2026 COLLECTION</span>
-              <span className="text-brand-bg/80 mt-2">COMING SOON</span>
-              <div className="w-12 h-[1px] bg-brand-bg/20 mt-4"></div>
-            </div>
-
-            {/* Main Heading */}
-            <p className="text-xs md:text-sm font-medium tracking-[0.35em] uppercase leading-[2em] text-brand-bg/90">
-              A NEW<br/>
-              IN EVERYDAY WEAR.
-            </p>
-          </motion.div>
+          <img 
+            src="/coming-soon.svg" 
+            alt="Coming Soon" 
+            className="w-full h-auto object-contain" 
+          />
         </motion.div>
-
       </div>
       
       <FooterLinks />
