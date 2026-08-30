@@ -1,9 +1,10 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 import FooterLinks from './FooterLinks';
 
 export default function NextSection() {
   const containerRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -12,6 +13,10 @@ export default function NextSection() {
 
   // Parallax based on scroll
   const yBg = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  
+  // Subtle parallax for the main SVG
+  const ySvg = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -80]);
+  const scaleSvg = useTransform(scrollYProgress, [0, 1], [1, shouldReduceMotion ? 1 : 1.05]);
 
   return (
     <section 
@@ -31,21 +36,36 @@ export default function NextSection() {
       </motion.div>
 
       {/* Main COMING SOON SVG Focal Point */}
-      <div className="relative z-20 w-full max-w-4xl md:max-w-6xl mx-auto flex flex-col items-center justify-center px-4 md:px-8 pointer-events-none">
+      <motion.div 
+        style={{ y: ySvg, scale: scaleSvg }}
+        className="relative z-20 w-full max-w-4xl md:max-w-6xl mx-auto flex flex-col items-center justify-center px-4 md:px-8 pointer-events-none"
+      >
         <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.95 }}
-          whileInView={{ opacity: 0.95, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full flex justify-center origin-center drop-shadow-2xl"
+          initial={{ 
+            opacity: 0, 
+            y: shouldReduceMotion ? 0 : 50, 
+            scale: shouldReduceMotion ? 1 : 0.94,
+            filter: shouldReduceMotion ? 'none' : 'blur(12px)',
+            clipPath: shouldReduceMotion ? 'none' : 'inset(-20% 100% -20% -20%)'
+          }}
+          whileInView={{ 
+            opacity: 0.95, 
+            y: 0, 
+            scale: 1,
+            filter: shouldReduceMotion ? 'none' : 'blur(0px)',
+            clipPath: shouldReduceMotion ? 'none' : 'inset(-20% -20% -20% -20%)'
+          }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full flex justify-center origin-center"
         >
           <img 
             src="/coming-soon.svg" 
             alt="Coming Soon" 
-            className="w-full h-auto object-contain" 
+            className="w-full h-auto object-contain drop-shadow-2xl" 
           />
         </motion.div>
-      </div>
+      </motion.div>
       
       <FooterLinks />
     </section>
