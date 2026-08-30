@@ -1,11 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { useRef } from 'react';
 import FooterLinks from './FooterLinks';
 
 export default function NextSection() {
   const containerRef = useRef<HTMLElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHoveringImage, setIsHoveringImage] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -14,21 +12,8 @@ export default function NextSection() {
 
   // Parallax based on scroll
   const yBg = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const yImage = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const yText = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const xComingSoon = useTransform(scrollYProgress, [0, 1], [200, -200]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      // Only calculate if the section is in view? It's fine globally for subtle effect
-      setMousePos({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1,
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   return (
     <section 
@@ -57,23 +42,23 @@ export default function NextSection() {
 
 
       {/* Content Layout */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-end justify-between gap-16 lg:gap-8">
+      <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col items-center justify-center gap-16">
         
-        {/* Left Column: Typography */}
+        {/* Typography */}
         <motion.div 
           style={{ y: yText }}
-          className="flex flex-col gap-12 md:gap-24 order-2 lg:order-1 w-full lg:w-1/3"
+          className="flex flex-col items-center text-center w-full max-w-2xl"
         >
           {/* Main "COMING SOON" Content Block */}
           <motion.div
             initial={{ opacity: 0.15, y: 40, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} // Premium custom ease
-            className="flex flex-col gap-12 md:gap-24 origin-left md:origin-center lg:origin-left"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center gap-12 md:gap-24 origin-center"
           >
             {/* Metadata */}
-            <div className="flex flex-col gap-3 text-[8px] md:text-[9px] font-medium tracking-[0.4em] uppercase text-brand-bg/40">
+            <div className="flex flex-col items-center gap-3 text-[8px] md:text-[9px] font-medium tracking-[0.4em] uppercase text-brand-bg/40">
               <span>UNIVE / 001</span>
               <span>2026 COLLECTION</span>
               <span className="text-brand-bg/80 mt-2">COMING SOON</span>
@@ -85,59 +70,6 @@ export default function NextSection() {
               A NEW<br/>
               IN EVERYDAY WEAR.
             </p>
-          </motion.div>
-        </motion.div>
-        
-        {/* Right Column: Fabric Image */}
-        <motion.div 
-          style={{ y: yImage }}
-          className="order-1 lg:order-2 w-full lg:w-2/3 max-w-3xl relative flex justify-end"
-        >
-          <motion.div 
-            initial={{ clipPath: 'inset(100% 0 0 0)' }}
-            whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
-            className="relative w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[3/2] overflow-hidden bg-black group"
-            onMouseEnter={() => setIsHoveringImage(true)}
-            onMouseLeave={() => setIsHoveringImage(false)}
-          >
-            <motion.img 
-              animate={{ 
-                x: mousePos.x * -10, 
-                y: mousePos.y * -10,
-                scale: isHoveringImage ? 1.05 : 1
-              }}
-              transition={{ type: "spring", stiffness: 40, damping: 25 }}
-              src="/fabric.jpg" 
-              alt="Collection Preview" 
-              className="absolute inset-[-10%] w-[120%] h-[120%] object-cover object-center opacity-80 group-hover:opacity-100 transition-opacity duration-700" 
-            />
-            
-            {/* View Label on Hover */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHoveringImage ? 1 : 0 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 flex flex-col items-center gap-2 mix-blend-difference"
-            >
-              <div className="w-8 h-8 relative flex justify-center items-center">
-                <span className="absolute w-full h-[1px] bg-white"></span>
-                <span className="absolute w-[1px] h-full bg-white"></span>
-              </div>
-              <span className="text-[9px] tracking-widest uppercase text-white font-medium">001</span>
-            </motion.div>
-          </motion.div>
-          
-          {/* Decorative bracket */}
-          <motion.div 
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1 }}
-            className="absolute -left-6 top-1/4 bottom-1/4 w-[1px] bg-brand-bg/10 hidden md:block"
-          >
-            <div className="absolute top-0 left-0 w-2 h-[1px] bg-brand-bg/30"></div>
-            <div className="absolute bottom-0 left-0 w-2 h-[1px] bg-brand-bg/30"></div>
           </motion.div>
         </motion.div>
 

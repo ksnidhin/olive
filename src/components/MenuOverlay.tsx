@@ -8,7 +8,11 @@ interface MenuOverlayProps {
 
 export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
   const [showComingSoon, setShowComingSoon] = useState(false);
-  const links = ['Collection', 'Journal'];
+  const links = [
+    { name: 'Collection', url: '#collection', target: '_self' },
+    { name: 'Instagram', url: 'https://www.instagram.com/unive.in', target: '_blank' },
+    { name: 'Contact', url: 'mailto:wearunive@gmail.com', target: '_self' }
+  ];
 
   // Lock body scroll
   useEffect(() => {
@@ -24,8 +28,8 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
     };
   }, [isOpen]);
 
-  const handleLinkClick = (e: React.MouseEvent, link: string) => {
-    if (link === 'Collection') {
+  const handleLinkClick = (e: React.MouseEvent, linkName: string) => {
+    if (linkName === 'Collection') {
       e.preventDefault();
       setShowComingSoon(true);
     } else {
@@ -73,15 +77,17 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
               >
                 {links.map((link, i) => (
                   <motion.a
-                    key={link}
-                    href={`#${link.toLowerCase()}`}
+                    key={link.name}
+                    href={link.url}
+                    target={link.target}
+                    rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                    onClick={(e) => handleLinkClick(e, link)}
+                    onClick={(e) => handleLinkClick(e, link.name)}
                     className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter hover:text-brand-concrete transition-colors relative group overflow-hidden"
                   >
-                    <span className="relative z-10">{link}</span>
+                    <span className="relative z-10">{link.name}</span>
                     <span className="absolute bottom-1 md:bottom-2 left-0 w-full h-[2px] bg-brand-bg origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></span>
                   </motion.a>
                 ))}
