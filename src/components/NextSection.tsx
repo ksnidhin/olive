@@ -16,6 +16,7 @@ export default function NextSection() {
   const yImage = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const yText = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const y01 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const xComingSoon = useTransform(scrollYProgress, [0, 1], [200, -200]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -44,6 +45,14 @@ export default function NextSection() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] md:w-[120vw] opacity-5 pointer-events-none mix-blend-screen flex justify-center"
       >
         <img src="/unive-logo.png" alt="" className="w-full h-auto object-contain filter invert" />
+      </motion.div>
+
+      {/* New Coming Soon Scrolling SVG */}
+      <motion.div 
+        style={{ y: yText, x: xComingSoon }}
+        className="absolute top-[20%] md:top-[10%] w-[150vw] md:w-[100vw] lg:w-[80vw] opacity-10 pointer-events-none flex justify-center mix-blend-screen"
+      >
+        <img src="/coming-soon.svg" alt="Coming Soon" className="w-full h-auto object-contain" />
       </motion.div>
 
       {/* Giant 01 */}
