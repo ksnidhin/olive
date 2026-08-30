@@ -70,40 +70,28 @@ export default function NextSection() {
           style={{ y: yText }}
           className="flex flex-col gap-12 md:gap-24 order-2 lg:order-1 w-full lg:w-1/3"
         >
-          {/* Metadata */}
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.2 } },
-              hidden: {}
-            }}
-            className="flex flex-col gap-3 text-[8px] md:text-[9px] font-medium tracking-[0.4em] uppercase text-brand-bg/40"
+          {/* Main "COMING SOON" Content Block */}
+          <motion.div
+            initial={{ opacity: 0.15, y: 40, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} // Premium custom ease
+            className="flex flex-col gap-12 md:gap-24 origin-left md:origin-center lg:origin-left"
           >
-            <motion.span variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
-              UNIVE / 001
-            </motion.span>
-            <motion.span variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
-              2026 COLLECTION
-            </motion.span>
-            <motion.span variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="text-brand-bg/80 mt-2">
-              COMING SOON
-            </motion.span>
-            <motion.div variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1 } }} className="w-12 h-[1px] bg-brand-bg/20 mt-4 origin-left"></motion.div>
-          </motion.div>
+            {/* Metadata */}
+            <div className="flex flex-col gap-3 text-[8px] md:text-[9px] font-medium tracking-[0.4em] uppercase text-brand-bg/40">
+              <span>UNIVE / 001</span>
+              <span>2026 COLLECTION</span>
+              <span className="text-brand-bg/80 mt-2">COMING SOON</span>
+              <div className="w-12 h-[1px] bg-brand-bg/20 mt-4"></div>
+            </div>
 
-          {/* Main Heading */}
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="text-xs md:text-sm font-medium tracking-[0.35em] uppercase leading-[2em] text-brand-bg/90"
-          >
-            A NEW<br/>
-            IN EVERYDAY WEAR.
-          </motion.p>
+            {/* Main Heading */}
+            <p className="text-xs md:text-sm font-medium tracking-[0.35em] uppercase leading-[2em] text-brand-bg/90">
+              A NEW<br/>
+              IN EVERYDAY WEAR.
+            </p>
+          </motion.div>
         </motion.div>
         
         {/* Right Column: Fabric Image */}
