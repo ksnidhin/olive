@@ -115,9 +115,9 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
             transition={{ delay: 0.8 }}
             className="absolute bottom-12 flex gap-8 text-[10px] tracking-widest uppercase opacity-50"
           >
-            <a href="#" className="hover:opacity-100 transition-opacity">Instagram</a>
-            <a href="#" className="hover:opacity-100 transition-opacity">About</a>
-            <a href="#" className="hover:opacity-100 transition-opacity">Contact</a>
+            <a href="https://www.instagram.com/unive.in" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">Instagram</a>
+            <a href="#about" className="hover:opacity-100 transition-opacity">About</a>
+            <a href="mailto:wearunive@gmail.com" className="hover:opacity-100 transition-opacity">Contact</a>
           </motion.div>
         </motion.div>
       )}
